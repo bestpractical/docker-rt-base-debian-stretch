@@ -1,0 +1,7 @@
+This repo defines a base docker image to use for testing Request Tracker (RT).
+
+It is intended only for testing but might be used as a base example for
+other deployments of RT with docker. Since it is used for testing, it
+includes development dependencies that are not needed for production RT deployments.
+
+Thanks to Christian Loos (GitHub:@cloos) for publishing RT docker examples.
