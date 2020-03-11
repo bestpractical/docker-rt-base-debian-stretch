@@ -1,0 +1,10 @@
+language: bash
+services: docker
+
+before_install:
+  - docker build -t rt-base-debian-stretch .
+  - docker run -d --name rt-base
+
+script:
+  - docker ps -a
+  - docker images
