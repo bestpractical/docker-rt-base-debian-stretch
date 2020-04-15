@@ -9,6 +9,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     gcc \
     gnupg \
     vim \
+    git \
     # RT core dependencies
     libapache2-mod-fcgid \
     libapache-session-perl \
