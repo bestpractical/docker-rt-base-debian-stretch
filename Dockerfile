@@ -118,7 +118,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 
 RUN cpanm \
   # RT dependencies
-  Module::Install \
   Email::Address \
   Email::Address::List \
   Mozilla::CA \
@@ -126,6 +125,4 @@ RUN cpanm \
   HTML::Gumbo \
   # RT extension development dependencies
   ExtUtils::MakeMaker \
-  Module::Install::RTx \
-  Module::Install::Substitute \
 && rm -rf /root/.cpanm
