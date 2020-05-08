@@ -20,6 +20,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     libconvert-color-perl \
     libcrypt-eksblowfish-perl \
     libcrypt-ssleay-perl \
+    libcrypt-x509-perl \
     libcss-minifier-xs-perl \
     libcss-squish-perl \
     libdata-guid-perl \
@@ -114,15 +115,26 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     build-essential \
     libhtml-formatexternal-perl \
     libdbd-mysql-perl \
+    gnupg1 \
 && rm -rf /var/lib/apt/lists/*
 
 RUN cpanm \
   # RT dependencies
+  Module::Install \
   Email::Address \
   Email::Address::List \
   Mozilla::CA \
   Encode::Detect::Detector \
   HTML::Gumbo \
+#  GnuPG::Interface \
+  Module::Path \
+  Moose \
+  MooseX::NonMoose \
+  MooseX::Role::Parameterized \
+  Path::Dispatcher \
+  Web::Machine \
   # RT extension development dependencies
   ExtUtils::MakeMaker \
 && rm -rf /root/.cpanm
+
+CMD tail -f /dev/null

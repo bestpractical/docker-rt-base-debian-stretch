@@ -5,3 +5,5 @@ other deployments of RT with docker. Since it is used for testing, it
 includes development dependencies that are not needed for production RT deployments.
 
 Thanks to Christian Loos (GitHub:@cloos) for publishing RT docker examples.
+
+Instructions for updating: https://docs.docker.com/docker-hub/repos/
