@@ -115,8 +115,15 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     build-essential \
     libhtml-formatexternal-perl \
     libdbd-mysql-perl \
-    gnupg1 \
 && rm -rf /var/lib/apt/lists/*
+
+# Install from backports to get newer gpg
+RUN echo 'deb http://deb.debian.org/debian stretch-backports main' > /etc/apt/sources.list.d/backports.list
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -t stretch-backports install -y --no-install-recommends \
+    gnupg \
+&& rm -rf /var/lib/apt/lists/*
+
+RUN gpg --version
 
 RUN cpanm \
   # RT dependencies
@@ -126,7 +133,7 @@ RUN cpanm \
   Mozilla::CA \
   Encode::Detect::Detector \
   HTML::Gumbo \
-#  GnuPG::Interface \
+  GnuPG::Interface \
   Module::Path \
   Moose \
   MooseX::NonMoose \
