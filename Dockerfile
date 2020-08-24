@@ -115,6 +115,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     build-essential \
     libhtml-formatexternal-perl \
     libdbd-mysql-perl \
+    libdbd-pg-perl \
 && rm -rf /var/lib/apt/lists/*
 
 # Install from backports to get newer gpg
@@ -143,5 +144,8 @@ RUN cpanm \
   # RT extension development dependencies
   ExtUtils::MakeMaker \
 && rm -rf /root/.cpanm
+
+# We need a non-root user for apache+fcgid tests.
+RUN adduser rt-test < /dev/null
 
 CMD tail -f /dev/null
