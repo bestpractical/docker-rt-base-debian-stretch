@@ -113,7 +113,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     libgumbo1 \
     build-essential \
     libhtml-formatexternal-perl \
+    libtext-worddiff-perl \
     libdbd-mysql-perl \
+    libdbd-pg-perl \
 && rm -rf /var/lib/apt/lists/*
 
 # Install from backports to get newer gpg
