@@ -31,7 +31,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     libdate-manip-perl \
     libdatetime-format-natural-perl \
     libdbd-sqlite3-perl \
-    libdbix-searchbuilder-perl \
     libdevel-globaldestruction-perl \
     libemail-address-list-perl \
     libemail-address-perl \
@@ -127,6 +126,8 @@ RUN gpg --version
 
 RUN cpanm \
   # RT dependencies
+  # Install Module::Install first because after perl 5.26 "." fails to find
+  # it in inc for older modules.
   Module::Install \
   Email::Address \
   Email::Address::List \
@@ -140,6 +141,7 @@ RUN cpanm \
   MooseX::Role::Parameterized \
   Path::Dispatcher \
   Web::Machine \
+  DBIx::SearchBuilder \
   # RT extension development dependencies
   ExtUtils::MakeMaker \
 && rm -rf /root/.cpanm
