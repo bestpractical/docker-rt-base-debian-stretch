@@ -116,7 +116,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     libhtml-formatexternal-perl \
     libtext-worddiff-perl \
     libdbd-mysql-perl \
-    libdbd-pg-perl \
+    libpq-dev \
 && rm -rf /var/lib/apt/lists/*
 
 # Install from backports to get newer gpg
@@ -147,6 +147,7 @@ RUN cpanm \
   DBIx::SearchBuilder \
   # RT extension development dependencies
   ExtUtils::MakeMaker \
+  DBD::Pg \
 && rm -rf /root/.cpanm
 
 CMD tail -f /dev/null
