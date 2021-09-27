@@ -144,10 +144,16 @@ RUN cpanm \
   MooseX::Role::Parameterized \
   Path::Dispatcher \
   Web::Machine \
+  capitalization \
   DBIx::SearchBuilder \
+  Parallel::ForkManager \
+  # DBD::Pg version 3.15 fails tests when run as root. There is a merged fix
+  # in github, but it is not yet released. Assuming it is released in 3.16,
+  # it shouldn't be an issue after that. Until then, this can be installed
+  # by passing --notest to cpanm for DBD::Pg.
+  DBD::Pg \
   # RT extension development dependencies
   ExtUtils::MakeMaker \
-  DBD::Pg \
 && rm -rf /root/.cpanm
 
 CMD tail -f /dev/null
